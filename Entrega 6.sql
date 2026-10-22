@@ -26,5 +26,6 @@ CREATE TABLE mundial.pais(
 GO
 
 CREATE TABLE mundial.prueba(
+	pruebaA INT,
 	pruebaB INT
 )
