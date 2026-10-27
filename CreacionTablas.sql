@@ -1,11 +1,4 @@
-CREATE DATABASE TP2026
-GO
-
-USE TP2026
-GO
-
---CREATE SCHEMA mundial
---GO
+--TABLAS
 
 CREATE TABLE mundial.confederacion(
 	id_confederacion INT PRIMARY KEY,
@@ -20,10 +13,12 @@ CREATE TABLE mundial.pais(
 	nombre VARCHAR(20),
 	codigo_iso VARCHAR(20),
 	huso_horario_estandar VARCHAR(10),
+	huso_horario_minutos_utc SMALLINT NULL,
 	pbi_per_capita DECIMAL(10,2),
 	codigo_moneda VARCHAR (10)
 )
 GO
+select * from mundial.pais
 
 CREATE TABLE mundial.grupo(
 	id_grupo INT IDENTITY(1,1) PRIMARY KEY,
@@ -32,7 +27,7 @@ CREATE TABLE mundial.grupo(
 GO
 
 CREATE TABLE mundial.seleccion(
-	id_seleccion INT IDENTITY(1,1) PRIMARY KEY,
+	id_seleccion INT IDENTITY(1,1) PRIMARY KEY,  --id_confederacion eliminado
 	id_pais INT REFERENCES mundial.pais(id_pais),
 	id_grupo INT REFERENCES mundial.grupo(id_grupo)
 )
@@ -147,8 +142,8 @@ CREATE TABLE mundial.campania(
 	id_anunciante INT REFERENCES mundial.anunciante(id_anunciante),
 	nombre_campania VARCHAR(20),
 	fecha_inicio DATE,
-	fecha_fin DATE,
-	presupuesto_total DECIMAL(10,2)
+	fecha_fin DATE CHECK(fecha_fin >= fecha_inicio),
+	presupuesto_total DECIMAL(10,2) CHECK(presupuesto_total>=0)
 )
 GO
 
@@ -188,9 +183,9 @@ GO
 
 CREATE TABLE mundial.espacio_publicitario(
 	id_espacio INT IDENTITY(1,1) PRIMARY KEY,
-	id_sede INT REFERENCES mundial.sede_estadio(id_sede),
-	numero_espacio INT,
-
+	id_sede INT NOT NULL REFERENCES mundial.sede_estadio(id_sede),
+	numero_espacio INT NOT NULL,
+	CONSTRAINT UQ_espacio_sede_numero UNIQUE (id_sede, numero_espacio)
 )
 GO
 
@@ -300,11 +295,12 @@ CREATE TABLE mundial.pauta_partido(
 	id_espacio INT REFERENCES mundial.espacio_publicitario(id_espacio),
 	id_pieza INT REFERENCES mundial.pieza_publicitaria(id_pieza),
 	id_moneda INT REFERENCES mundial.moneda(id_moneda),
-	tarifa_base_usd DECIMAL(8,2),
-	tipo_cambio_aplicado DECIMAL(8,2),
-	tarifa_final DECIMAL(8,2),
-	es_prime_time BIT,
-	estado_facturacion VARCHAR(50)
+	tarifa_base_usd DECIMAL(12,2) CHECK(tarifa_base_usd >= 0) NOT NULL,
+	tipo_cambio_aplicado DECIMAL(12,6) CHECK(tipo_cambio_aplicado >= 0) NOT NULL,
+	tarifa_final DECIMAL(12,2) CHECK(tarifa_final >= 0) NOT NULL,
+	es_prime_time BIT NOT NULL,
+	estado_facturacion VARCHAR(50) NOT NULL,
+	CONSTRAINT UQ_pauta_partido_espacio UNIQUE (id_partido,id_espacio)
 )
 GO
 
@@ -352,3 +348,7 @@ CREATE TABLE mundial.alineacion_partido(
 	minuto_salida INT
 )
 GO
+
+--37 TABLAS
+
+
