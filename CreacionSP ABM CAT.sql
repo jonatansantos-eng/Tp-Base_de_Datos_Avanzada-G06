@@ -9,8 +9,6 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-16
-    Archivo: 02_CreacionTablas.sql
-    Objetivo: crear las 37 tablas, claves y restricciones del modelo.
 */
 USE TP2026;
 GO
