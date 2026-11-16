@@ -715,9 +715,7 @@ CREATE TABLE mundial.pauta_partido
 );
 GO
 
-/* =========================================================
-   6. IMPORTACIONES Y TRAZABILIDAD
-   ========================================================= */
+
 
 CREATE TABLE mundial.fuente_importacion
 (
@@ -803,11 +801,4 @@ CREATE TABLE mundial.error_importacion
     CONSTRAINT FK_error_detalle FOREIGN KEY (id_detalle_importacion)
         REFERENCES mundial.detalle_importacion(id_detalle_importacion)
 );
-GO
-
-/* Verificacion: deben existir 37 tablas en el esquema mundial. */
-SELECT COUNT(*) AS cantidad_tablas_mundial
-FROM sys.tables AS t
-INNER JOIN sys.schemas AS s ON s.schema_id = t.schema_id
-WHERE s.name = N'mundial';
 GO
