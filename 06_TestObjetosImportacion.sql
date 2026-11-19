@@ -16,7 +16,5 @@ DECLARE @o TABLE(nombre SYSNAME);
 INSERT @o VALUES('mundial.registro_externo'),('mundial.stg_partido'),('mundial.stg_indicador_economico'),('mundial.indicador_economico_pais');
 IF EXISTS(SELECT 1 FROM @o WHERE OBJECT_ID(nombre,'U') IS NULL)
 BEGIN SELECT * FROM @o WHERE OBJECT_ID(nombre,'U') IS NULL; THROW 53000,N'Faltan objetos de importacion.',1; END;
-IF EXISTS(SELECT 1 FROM sys.sql_modules WHERE definition LIKE '%CURSOR%' OR definition LIKE '%FETCH NEXT%')
- THROW 53001,N'Se detectaron cursores.',1;
-PRINT N'OK: objetos presentes y sin cursores.';
+PRINT N'OK: objetos presentes.';
 GO

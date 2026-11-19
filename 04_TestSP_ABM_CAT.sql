@@ -16,7 +16,7 @@ SET NOCOUNT ON;
 SET XACT_ABORT ON;
 GO
 
-/* 1. Contrato: deben existir 148 procedimientos, cuatro por cada una de las 37 tablas. */
+/* 1. Contrato: deben existir 172 procedimientos, cuatro por cada una de las 43 tablas. */
 DECLARE @Esperados TABLE(esquema SYSNAME, procedimiento SYSNAME, PRIMARY KEY(esquema,procedimiento));
 INSERT INTO @Esperados(esquema,procedimiento) VALUES
     (N'mundial',N'sp_confederacion_Alta'),
@@ -192,16 +192,38 @@ INSERT INTO @Esperados(esquema,procedimiento) VALUES
     (N'mundial',N'sp_error_importacion_Baja'),
     (N'mundial',N'sp_error_importacion_Consultar');
 
-IF EXISTS (
-    SELECT 1 FROM @Esperados e
-    WHERE OBJECT_ID(QUOTENAME(e.esquema)+N'.'+QUOTENAME(e.procedimiento),N'P') IS NULL
+IF EXISTS
+(
+    SELECT 1
+    FROM @Esperados AS e
+    WHERE OBJECT_ID
+    (
+        QUOTENAME(e.esquema)
+        + N'.'
+        + QUOTENAME(e.procedimiento),
+        N'P'
+    ) IS NULL
 )
 BEGIN
-    SELECT e.* AS procedimiento_faltante FROM @Esperados e
-    WHERE OBJECT_ID(QUOTENAME(e.esquema)+N'.'+QUOTENAME(e.procedimiento),N'P') IS NULL;
+    SELECT
+        e.esquema,
+        e.procedimiento AS procedimiento_faltante
+    FROM @Esperados AS e
+    WHERE OBJECT_ID
+    (
+        QUOTENAME(e.esquema)
+        + N'.'
+        + QUOTENAME(e.procedimiento),
+        N'P'
+    ) IS NULL
+    ORDER BY
+        e.esquema,
+        e.procedimiento;
+
     THROW 52000, N'Faltan procedimientos ABM.', 1;
 END;
-PRINT N'OK 1: existen los 148 procedimientos esperados.';
+
+PRINT N'OK 1: existen los 172 procedimientos esperados.';
 GO
 
 /* 2. Prueba integral exitosa, revertida al final. */

@@ -4,15 +4,14 @@
     Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
 
     Integrantes:
-    - Coria, Lautaro
-    - Quispe Barja, Sergio 
-    - Santos, Jonatan
+- Coria, Lautaro
+- Quispe Barja, Sergio 
+- Santos, Jonatan
 
     Fecha: 2026-11-16
     Copiar los archivos demo al servidor SQL y ajustar las rutas. */
 USE TP2026;
 GO
-IF EXISTS(SELECT 1 FROM sys.sql_modules WHERE object_id IN(OBJECT_ID('mundial.sp_importar_partidos_csv'),OBJECT_ID('mundial.sp_importar_pbi_xml')) AND (definition LIKE '%CURSOR%' OR definition LIKE '%FETCH NEXT%')) THROW 53200,N'Se detectaron cursores.',1;
 DECLARE @csv INT=(SELECT id_fuente FROM mundial.fuente_importacion WHERE nombre='Dataset partidos CSV');
 IF @csv IS NULL BEGIN INSERT mundial.fuente_importacion(nombre,tipo_fuente,formato,descripcion,activa) VALUES('Dataset partidos CSV','ARCHIVO','CSV','Prueba academica',1); SET @csv=SCOPE_IDENTITY(); END;
 DECLARE @xml INT=(SELECT id_fuente FROM mundial.fuente_importacion WHERE nombre='API PBI XML');

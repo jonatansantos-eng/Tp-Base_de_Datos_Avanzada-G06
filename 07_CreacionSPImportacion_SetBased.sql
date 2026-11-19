@@ -47,8 +47,8 @@ AS
 BEGIN
  SET NOCOUNT ON; SET XACT_ABORT ON;
  IF LOWER(RIGHT(@archivo,4))<>'.csv' THROW 53102,N'Formato esperado: CSV.',1;
- DECLARE @id_lote INT,@sql NVARCHAR(MAX);
- EXEC mundial.sp_importacion_iniciar_lote @id_fuente,CONVERT(VARCHAR(260),@archivo),'PARTIDO',@hash,@id_lote OUTPUT;
+  DECLARE @id_lote INT,@sql NVARCHAR(MAX),@archivo_vc VARCHAR(260)=CONVERT(VARCHAR(260),@archivo);
+  EXEC mundial.sp_importacion_iniciar_lote @id_fuente,@archivo_vc,'PARTIDO',@hash,@id_lote OUTPUT;
  BEGIN TRY
   CREATE TABLE #raw(clave_externa NVARCHAR(200),fase NVARCHAR(100),estadio NVARCHAR(200),pais_local_iso NVARCHAR(20),pais_visitante_iso NVARCHAR(20),fecha_hora_utc NVARCHAR(100),fecha_hora_local NVARCHAR(100),goles_local NVARCHAR(30),goles_visitante NVARCHAR(30),asistencia_publico NVARCHAR(30),estado_partido NVARCHAR(50));
   SET @sql=N'BULK INSERT #raw FROM '+QUOTENAME(@archivo,'''')+N' WITH (FORMAT=''CSV'',FIRSTROW=2,CODEPAGE=''65001'',TABLOCK);';
@@ -112,8 +112,8 @@ AS
 BEGIN
  SET NOCOUNT ON; SET XACT_ABORT ON;
  IF LOWER(RIGHT(@archivo,4))<>'.xml' THROW 53103,N'Formato esperado: XML.',1;
- DECLARE @id_lote INT,@sql NVARCHAR(MAX),@xml XML;
- EXEC mundial.sp_importacion_iniciar_lote @id_fuente,CONVERT(VARCHAR(260),@archivo),'INDICADOR_ECONOMICO',@hash,@id_lote OUTPUT;
+ DECLARE @id_lote INT,@sql NVARCHAR(MAX),@xml XML,@archivo_vc VARCHAR(260)=CONVERT(VARCHAR(260),@archivo);
+ EXEC mundial.sp_importacion_iniciar_lote @id_fuente,@archivo_vc,'INDICADOR_ECONOMICO',@hash,@id_lote OUTPUT;
  BEGIN TRY
   CREATE TABLE #rawxml(contenido VARBINARY(MAX));
   SET @sql=N'INSERT #rawxml SELECT BulkColumn FROM OPENROWSET(BULK '+QUOTENAME(@archivo,'''')+N',SINGLE_BLOB)x;';
