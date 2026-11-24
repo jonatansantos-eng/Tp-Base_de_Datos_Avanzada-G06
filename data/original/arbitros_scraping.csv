@@ -1,0 +1,17 @@
+clave_externa,nombres,apellidos,codigo_pais,confederacion,categoria,fecha_nacimiento,ediciones_mundial
+ARB_ARG_01,Nestor,Pitana,ARG,CONMEBOL,FIFA Elite,1975-06-17,"2014, 2018"
+ARB_ARG_02,Facundo,Tello,ARG,CONMEBOL,FIFA Elite,1982-05-04,2022
+ARB_BRA_01,Wilton,Sampaio,BRA,CONMEBOL,FIFA Elite,1981-12-28,"2018, 2022"
+ARB_BRA_02,Raphael,Claus,BRA,CONMEBOL,FIFA Elite,1979-09-06,2022
+ARB_FRA_01,Clement,Turpin,FRA,UEFA,FIFA Elite,1982-05-16,"2018, 2022"
+ARB_FRA_02,Stephanie,Frappart,FRA,UEFA,FIFA Elite,1983-12-14,2022
+ARB_USA_01,Ismail,Elfath,USA,CONCACAF,FIFA Elite,1982-03-03,2022
+ARB_USA_02,Armando,Villarreal,USA,CONCACAF,FIFA Premier,1986-05-31,2022 (VAR)
+ARB_ENG_01,Michael,Oliver,ENG,UEFA,FIFA Elite,1985-02-20,2022
+ARB_ENG_02,Anthony,Taylor,ENG,UEFA,FIFA Elite,1978-10-20,2022
+ARB_GER_01,Daniel,Siebert,GER,UEFA,FIFA Elite,1984-05-04,2022
+ARB_ESP_01,Antonio,Mateu Lahoz,ESP,UEFA,FIFA Elite,1977-03-12,"2018, 2022"
+ARB_ITA_01,Daniele,Orsato,ITA,UEFA,FIFA Elite,1975-11-23,2022
+ARB_MEX_01,Cesar,Ramos,MEX,CONCACAF,FIFA Elite,1983-12-15,"2018, 2022"
+ARB_JPN_01,Yoshimi,Yamashita,JPN,AFC,FIFA Elite,1986-02-20,2022
+ARB_POL_01,Szymon,Marciniak,POL,UEFA,FIFA Elite,1981-01-07,"2018, 2022"

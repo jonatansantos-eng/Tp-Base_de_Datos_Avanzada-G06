@@ -1,0 +1,4 @@
+clave_externa,fase,estadio,pais_local_iso,pais_visitante_iso,fecha_hora_utc,fecha_hora_local,goles_local,goles_visitante,asistencia_publico,estado_partido
+MATCH_2026_01,Fase de Grupos,MetLife Stadium,ARG,BRA,2026-06-11T20:00:00,2026-06-11T16:00:00,2,1,82500,FINALIZADO
+MATCH_2026_02,Fase de Grupos,MetLife Stadium,FRA,USA,2026-06-12T18:00:00,2026-06-12T14:00:00,3,0,78000,FINALIZADO
+MATCH_2026_ERR_01,Fase Inexistente,MetLife Stadium,ARG,FRA,2026-06-13T20:00:00,2026-06-13T16:00:00,1,1,80000,FINALIZADO
