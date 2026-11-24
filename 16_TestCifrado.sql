@@ -1,11 +1,15 @@
 /*
- Universidad Nacional de La Matanza
- Materia: 3641 - Bases de Datos Aplicada
- Entrega 8 - Testing de cifrado de datos sensibles
- Integrantes: Coria Lautaro, Quispe Barja Sergio, Santos Jonatan
- Fecha: 2026-11-23
+    Universidad Nacional de La Matanza
+    Materia: 3641 - Bases de Datos Aplicada
+    Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
 
- Requisito: ejecutar previamente 15_AplicacionCifrado.sql.
+    Integrantes:
+    - Coria, Lautaro
+    - Quispe Barja, Sergio 
+    - Santos, Jonatan
+
+    Fecha: 2026-11-23
+    Objetivo: Realizar pruebas unitarias sobre el cifrado de datos sensibles en la base de datos.
 */
 USE TP2026;
 GO

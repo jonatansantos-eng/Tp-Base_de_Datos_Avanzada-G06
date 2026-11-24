@@ -9,7 +9,6 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-23
-    Archivo: 10_TestSPImportacion_SetBased.sql
     Objetivo: Pruebas integrales de importacion masiva (CSV de partidos, XML de PBI, CSV de arbitros, JSON de tipo de cambio).
               Demostracion de Upsert, errores parciales y control de hashes duplicados.
 */

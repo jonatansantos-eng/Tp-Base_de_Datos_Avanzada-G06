@@ -9,7 +9,6 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-23
-    Archivo: 05_CreacionObjetosImportacion.sql
     Objetivo: Crear objetos auxiliares, tablas de staging y estructuras para importaciones masivas (CSV, XML, JSON, Scraping).
 */
 USE TP2026;

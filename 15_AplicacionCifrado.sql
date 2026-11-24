@@ -1,14 +1,15 @@
 /*
- Universidad Nacional de La Matanza
- Materia: 3641 - Bases de Datos Aplicada
- Entrega 8 - Aplicacion de cifrado de datos sensibles
- Integrantes: Coria Lautaro, Quispe Barja Sergio, Santos Jonatan
- Fecha: 2026-11-23
+    Universidad Nacional de La Matanza
+    Materia: 3641 - Bases de Datos Aplicada
+    Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
 
- IMPORTANTE:
- 1. Ejecutar con SQLCMD Mode activado.
- 2. Ejecutar sobre una TP2026 limpia, reconstruida con scripts 01 a 14.
- 3. Realizar un backup completo previo.
+    Integrantes:
+    - Coria, Lautaro
+    - Quispe Barja, Sergio 
+    - Santos, Jonatan
+
+    Fecha: 2026-11-23
+    Objetivo: Realiza el cifrado de datos sensibles en la base de datos.
 */
 :r C:\TP2026\00_Secretos.local.sql
 

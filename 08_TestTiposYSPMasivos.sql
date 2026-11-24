@@ -9,7 +9,6 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-23
-    Archivo: 08_TestTiposYSPMasivos.sql
     Objetivo: Pruebas unitarias de los Table-Valued Parameters y Stored Procedures masivos de negocio.
 */
 USE TP2026;

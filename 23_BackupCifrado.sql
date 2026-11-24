@@ -1,5 +1,16 @@
-/* Entrega 8 - Backup completo cifrado AES-256
- Ejecutar como sysadmin. Ajustar rutas y contrasenas. */
+/*
+    Universidad Nacional de La Matanza
+    Materia: 3641 - Bases de Datos Aplicada
+    Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
+
+    Integrantes:
+    - Coria, Lautaro
+    - Quispe Barja, Sergio 
+    - Santos, Jonatan
+
+    Fecha: 2026-11-24
+    Objetivo: Realizar un backup completo cifrado AES-256 de la base de datos TP2026. 
+*/
 
 :r C:\TP2026\00_Secretos.local.sql
 
@@ -25,7 +36,7 @@ END
 ELSE
 BEGIN
     THROW 55801,
-          N'No se encontró el certificado de backup.',
+          N'No se encontrï¿½ el certificado de backup.',
           1;
 END;
 GO

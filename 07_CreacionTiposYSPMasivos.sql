@@ -9,9 +9,8 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-23
-    Archivo: 07_CreacionTiposYSPMasivos.sql
     Objetivo: Crear los Table-Valued Parameters (TVP) y los Stored Procedures de negocio masivos
-              para la manipulacion set-based de datos externos (reutilizacion Entrega 5 / Entrega 6).
+              para la manipulacion set-based de datos externos.
 */
 USE TP2026;
 GO
@@ -19,9 +18,7 @@ SET NOCOUNT ON;
 SET XACT_ABORT ON;
 GO
 
-/* =========================================================================
-   1. DEFINICION DE TABLE-VALUED PARAMETERS (TVP)
-   ========================================================================= */
+/* 1. DEFINICION DE TABLE-VALUED PARAMETERS (TVP) */
 
 IF TYPE_ID(N'mundial.tipo_partido_importacion') IS NULL
 BEGIN
@@ -85,9 +82,7 @@ BEGIN
 END;
 GO
 
-/* =========================================================================
-   2. STORED PROCEDURES DE NEGOCIO MASIVOS (SET-BASED)
-   ========================================================================= */
+/* 2. STORED PROCEDURES DE NEGOCIO MASIVOS (SET-BASED) */
 
 /* --- 2.1 Upsert Masivo de Partidos --- */
 CREATE OR ALTER PROCEDURE mundial.sp_partido_UpsertMasivo

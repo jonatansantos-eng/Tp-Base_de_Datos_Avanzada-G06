@@ -9,7 +9,6 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-23
-    Archivo: 14_TestSPReportes.sql
     Objetivo: Script de testing para los 7 procedimientos de reportes analiticos (Entrega 7).
               Incluye indicaciones y comentarios con los resultados esperados de cada ejecucion.
 */

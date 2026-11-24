@@ -1,8 +1,15 @@
 /*
     Universidad Nacional de La Matanza
     Materia: 3641 - Bases de Datos Aplicada
-    Entrega 8 - Test del rol cargador de resultados
+    Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
+
+    Integrantes:
+    - Coria, Lautaro
+    - Quispe Barja, Sergio 
+    - Santos, Jonatan
+
     Fecha: 2026-11-24
+    Objetivo: Verificar que el usuario cargador de resultados tenga los permisos necesarios para ejecutar el modulo firmado, sin acceso a tablas sensibles ni permisos de control sobre la clave simetrica.
 */
 USE TP2026;
 GO

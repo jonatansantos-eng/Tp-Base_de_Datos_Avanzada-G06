@@ -9,7 +9,6 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-23
-    Archivo: 06_TestObjetosImportacion.sql
     Objetivo: Verificar la existencia e integridad de los objetos auxiliares de importacion y staging.
 */
 USE TP2026;

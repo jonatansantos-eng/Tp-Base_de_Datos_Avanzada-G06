@@ -1,5 +1,16 @@
-/* Entrega 8 - Verificacion y restauracion de prueba
- Ajustar MOVE con los nombres logicos devueltos por FILELISTONLY. */
+/*
+    Universidad Nacional de La Matanza
+    Materia: 3641 - Bases de Datos Aplicada
+    Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
+
+    Integrantes:
+    - Coria, Lautaro
+    - Quispe Barja, Sergio 
+    - Santos, Jonatan
+
+    Fecha: 2026-11-24
+    Objetivo: Verificar la integridad del backup cifrado mediante una restauracion de prueba, verificando que el backup no este corrupto y que los datos puedan restaurarse correctamente. 
+*/
 USE master;
 GO
 RESTORE HEADERONLY FROM DISK=N'C:\SQLServer\Backup\TP2026_FULL_ENCRYPTED.bak';

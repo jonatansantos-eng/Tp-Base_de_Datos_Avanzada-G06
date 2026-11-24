@@ -1,4 +1,16 @@
-/* Entrega 8 - Roles y permisos granulares | 2026-11-23 */
+/*
+    Universidad Nacional de La Matanza
+    Materia: 3641 - Bases de Datos Aplicada
+    Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
+
+    Integrantes:
+    - Coria, Lautaro
+    - Quispe Barja, Sergio 
+    - Santos, Jonatan
+
+    Fecha: 2026-11-23
+    Objetivo: Crear roles y permisos para el sistema de registro y gestion del Mundial de Futbol.
+ */
 USE TP2026;
 GO
 SET NOCOUNT ON;

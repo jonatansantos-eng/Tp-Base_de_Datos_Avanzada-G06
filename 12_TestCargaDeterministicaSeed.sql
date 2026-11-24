@@ -9,7 +9,6 @@
     - Santos, Jonatan
 
     Fecha: 2026-11-23
-    Archivo: 12_TestCargaDeterministicaSeed.sql
     Objetivo: Verificar el cumplimiento estricto de las metricas de volumetria minima
               y los 6 casos obligatorios del juego de datos para la aceptacion del TP.
 */
@@ -21,9 +20,7 @@ GO
 
 PRINT N'--- Iniciando validacion de Volumetria Minima y Casos Obligatorios ---';
 
-/* =========================================================================
-   1. VALIDACION DE VOLUMETRIAS MINIMAS
-   ========================================================================= */
+/* 1. VALIDACION DE VOLUMETRIAS MINIMAS */
 
 /* 1.1 Al menos 8 sedes y al menos 3 husos horarios distintos */
 DECLARE @cant_sedes INT = (SELECT COUNT(*) FROM mundial.sede_estadio);
@@ -93,9 +90,7 @@ IF @paises_anunciantes < 6
 
 PRINT CONCAT(N'OK 5: Paises de anunciantes representados: ', @paises_anunciantes, N'.');
 
-/* =========================================================================
-   2. VALIDACION DE LOS 6 CASOS OBLIGATORIOS
-   ========================================================================= */
+/* 2. VALIDACION DE LOS 6 CASOS OBLIGATORIOS */
 
 /* Caso 1: Partido con doble amarilla y partido con roja directa */
 IF NOT EXISTS (SELECT 1 FROM mundial.tarjeta WHERE tipo_expulsion = 'DOBLE_AMARILLA')

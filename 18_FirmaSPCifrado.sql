@@ -1,26 +1,15 @@
 /*
     Universidad Nacional de La Matanza
     Materia: 3641 - Bases de Datos Aplicada
-    Entrega 8 - Correccion de permisos para modulos firmados
+    Trabajo Practico: Sistema de registro y gestion del Mundial de Futbol
 
     Integrantes:
     - Coria, Lautaro
-    - Quispe Barja, Sergio
+    - Quispe Barja, Sergio 
     - Santos, Jonatan
 
     Fecha: 2026-11-24
-
-    Motivo:
-    OPEN SYMMETRIC KEY necesita permiso sobre la clave simetrica y sobre el
-    certificado que la protege. Ademas, un DENY explicito asignado al rol del
-    usuario puede prevalecer sobre los permisos agregados por la firma.
-
-    Este script:
-    1. Quita los DENY directos sobre la clave de los roles operativos.
-    2. Mantiene a los roles sin GRANT directo sobre la clave.
-    3. Concede al usuario del certificado de firma los permisos criptograficos.
-    4. Verifica la firma de sp_reporte_Goleadores.
-    5. Ejecuta una prueba real bajo usr_resultados_test.
+    Objetivo: Firmar el Stored Procedure sp_reporte_Goleadores y verificar que el rol no tenga permisos directos sobre la clave simetrica. Realizar una prueba funcional real del modulo firmado.
 */
 
 USE TP2026;
