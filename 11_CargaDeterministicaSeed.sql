@@ -21,7 +21,9 @@ GO
 
 PRINT N'--- Iniciando carga deterministica de seed y casos obligatorios ---';
 
-/* 1. CONFEDERACIONES Y PAISES (Al menos 16 selecciones y 6 paises anunciantes) */
+/* =========================================================================
+   1. CONFEDERACIONES Y PAISES (Al menos 16 selecciones y 6 paises anunciantes)
+   ========================================================================= */
 
 DECLARE @Conf TABLE (nombre VARCHAR(100), sigla VARCHAR(10));
 INSERT INTO @Conf VALUES
@@ -77,7 +79,9 @@ INSERT INTO mundial.moneda (codigo_iso, descripcion)
 SELECT m.iso, m.descr FROM @Monedas m
 WHERE NOT EXISTS (SELECT 1 FROM mundial.moneda WHERE codigo_iso = m.iso);
 
-/* 2. SEDES (Al menos 8 sedes con al menos 3 husos horarios distintos) */
+/* =========================================================================
+   2. SEDES (Al menos 8 sedes con al menos 3 husos horarios distintos)
+   ========================================================================= */
 
 /* Ciudades */
 DECLARE @Ciudades TABLE (iso CHAR(3), nombre VARCHAR(100));
@@ -110,7 +114,9 @@ FROM @Estadios e
 JOIN mundial.ciudad c ON c.nombre = e.ciudad
 WHERE NOT EXISTS (SELECT 1 FROM mundial.sede_estadio se WHERE se.nombre_estadio = e.estadio);
 
-/* 3. GRUPOS, FASES Y REGLAMENTO */
+/* =========================================================================
+   3. GRUPOS, FASES Y REGLAMENTO
+   ========================================================================= */
 
 DECLARE @Grupos TABLE (nombre VARCHAR(50));
 INSERT INTO @Grupos VALUES ('Grupo A'), ('Grupo B'), ('Grupo C'), ('Grupo D');
@@ -154,7 +160,9 @@ JOIN mundial.pais p ON p.codigo_iso = sa.iso
 JOIN mundial.grupo g ON g.nombre_grupo = sa.grupo
 WHERE NOT EXISTS (SELECT 1 FROM mundial.seleccion s WHERE s.id_pais = p.id_pais);
 
-/* 4. POSICIONES Y CLUBES */
+/* =========================================================================
+   4. POSICIONES Y CLUBES
+   ========================================================================= */
 
 DECLARE @Pos TABLE (cod VARCHAR(10), descr VARCHAR(100), linea VARCHAR(30));
 INSERT INTO @Pos VALUES
@@ -185,7 +193,9 @@ FROM @Clubes cl
 JOIN mundial.pais p ON p.codigo_iso = cl.iso
 WHERE NOT EXISTS (SELECT 1 FROM mundial.club WHERE nombre_club = cl.nombre AND id_pais = p.id_pais);
 
-/* 5. PLANTILLAS Y JUGADORES (Al menos 23 convocados por cada una de las 16 selecciones = 368 jugadores) */
+/* =========================================================================
+   5. PLANTILLAS Y JUGADORES (Al menos 23 convocados por cada una de las 16 selecciones = 368 jugadores)
+   ========================================================================= */
 
 DECLARE @id_pos_por INT = (SELECT id_posicion FROM mundial.posicion WHERE codigo = 'POR');
 DECLARE @id_pos_def INT = (SELECT id_posicion FROM mundial.posicion WHERE codigo = 'DEF');
@@ -239,7 +249,9 @@ WHERE NOT EXISTS (
     WHERE c.id_seleccion = s.id_seleccion AND c.id_jugador = j.id_jugador
 );
 
-/* 6. ARBITROS (Al menos 15 arbitros con federaciones y nacionalidades) */
+/* =========================================================================
+   6. ARBITROS (Al menos 15 arbitros con federaciones y nacionalidades)
+   ========================================================================= */
 
 DECLARE @Arbs TABLE (iso CHAR(3), sigla_conf VARCHAR(10), nom VARCHAR(100), ape VARCHAR(100), nac DATE, cat VARCHAR(50));
 INSERT INTO @Arbs VALUES
@@ -278,7 +290,9 @@ INSERT INTO mundial.rol_arbitral (descripcion)
 SELECT r.descr FROM @RolesArb r
 WHERE NOT EXISTS (SELECT 1 FROM mundial.rol_arbitral WHERE descripcion = r.descr);
 
-/* 7. PARTIDOS (Al menos 24 partidos) */
+/* =========================================================================
+   7. PARTIDOS (Al menos 24 partidos)
+   ========================================================================= */
 
 DECLARE @id_fase_grupos INT = (SELECT id_fase FROM mundial.fase WHERE nombre_fase = 'Fase de Grupos');
 DECLARE @id_fase_octavos INT = (SELECT id_fase FROM mundial.fase WHERE nombre_fase = 'Octavos de Final');
@@ -398,8 +412,10 @@ WHERE NOT EXISTS (
     WHERE ap.id_partido_equipo = ped.id_partido_equipo AND ap.id_jugador = c.id_jugador
 );
 
-/* 8. DESIGNACIONES ARBITRALES COMPLETAS (Para los 24 partidos)
-   Garantiza no-conflicto de nacionalidad y 5 arbitros distintos por partido */
+/* =========================================================================
+   8. DESIGNACIONES ARBITRALES COMPLETAS (Para los 24 partidos)
+   Garantiza no-conflicto de nacionalidad y 5 arbitros distintos por partido
+   ========================================================================= */
 
 DECLARE @rol_prin INT = (SELECT id_rol_arbitral FROM mundial.rol_arbitral WHERE descripcion = 'ARBITRO_PRINCIPAL');
 DECLARE @rol_as1 INT = (SELECT id_rol_arbitral FROM mundial.rol_arbitral WHERE descripcion = 'ASISTENTE_1');
@@ -445,7 +461,9 @@ WHERE av.rn_arb <= 5
       WHERE da.id_partido = av.id_partido AND da.id_rol_arbitral = ro.id_rol
   );
 
-/* 9. ANUNCIANTES, ESPACIOS Y PAUTAS PUBLICITARIAS (6 paises, 4 espacios) */
+/* =========================================================================
+   9. ANUNCIANTES, ESPACIOS Y PAUTAS PUBLICITARIAS (6 paises, 4 espacios)
+   ========================================================================= */
 
 /* Espacios publicitarios (4 por sede) */
 INSERT INTO mundial.espacio_publicitario (id_sede, numero_espacio)
@@ -532,7 +550,9 @@ WHERE NOT EXISTS (
     WHERE pp.id_partido = ps.id_partido AND pp.id_espacio = ep.id_espacio
 );
 
-/* 10. CASOS OBLIGATORIOS */
+/* =========================================================================
+   10. CASOS OBLIGATORIOS
+   ========================================================================= */
 
 /* Tipos de gol y tipos de tarjeta */
 IF NOT EXISTS (SELECT 1 FROM mundial.tipo_gol WHERE descripcion = 'JUGADA')

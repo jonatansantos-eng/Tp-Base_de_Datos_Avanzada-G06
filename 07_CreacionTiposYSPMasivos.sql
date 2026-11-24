@@ -19,7 +19,9 @@ SET NOCOUNT ON;
 SET XACT_ABORT ON;
 GO
 
-/* 1. DEFINICION DE TABLE-VALUED PARAMETERS (TVP) */
+/* =========================================================================
+   1. DEFINICION DE TABLE-VALUED PARAMETERS (TVP)
+   ========================================================================= */
 
 IF TYPE_ID(N'mundial.tipo_partido_importacion') IS NULL
 BEGIN
@@ -82,6 +84,10 @@ BEGIN
     );
 END;
 GO
+
+/* =========================================================================
+   2. STORED PROCEDURES DE NEGOCIO MASIVOS (SET-BASED)
+   ========================================================================= */
 
 /* --- 2.1 Upsert Masivo de Partidos --- */
 CREATE OR ALTER PROCEDURE mundial.sp_partido_UpsertMasivo

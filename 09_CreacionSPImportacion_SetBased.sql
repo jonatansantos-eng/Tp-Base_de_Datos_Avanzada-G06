@@ -21,7 +21,9 @@ SET ANSI_NULLS ON;
 SET QUOTED_IDENTIFIER ON;
 GO
 
-/* 1. GESTION DE LOTES */
+/* =========================================================================
+   1. GESTION DE LOTES
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_importacion_iniciar_lote
     @id_fuente INT,
@@ -82,7 +84,9 @@ BEGIN
 END;
 GO
 
-/* 2. IMPORTACION DE PARTIDOS (CSV) -> TVP -> sp_partido_UpsertMasivo */
+/* =========================================================================
+   2. IMPORTACION DE PARTIDOS (CSV) -> TVP -> sp_partido_UpsertMasivo
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_importar_partidos_csv
     @id_fuente INT,
@@ -219,7 +223,9 @@ BEGIN
 END;
 GO
 
-/* 3. IMPORTACION DE PBI (XML) -> TVP -> sp_indicador_economico_UpsertMasivo */
+/* =========================================================================
+   3. IMPORTACION DE PBI (XML) -> TVP -> sp_indicador_economico_UpsertMasivo
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_importar_pbi_xml
     @id_fuente INT,
@@ -341,7 +347,9 @@ BEGIN
 END;
 GO
 
-/* 4. IMPORTACION DE ARBITROS (SCRAPING CSV) -> TVP -> sp_arbitro_UpsertMasivo */
+/* =========================================================================
+   4. IMPORTACION DE ARBITROS (SCRAPING CSV) -> TVP -> sp_arbitro_UpsertMasivo
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_importar_arbitros_csv
     @id_fuente INT,
@@ -458,7 +466,9 @@ BEGIN
 END;
 GO
 
-/* 5. IMPORTACION DE TIPOS DE CAMBIO (API JSON) -> TVP -> sp_tipo_cambio_UpsertMasivo */
+/* =========================================================================
+   5. IMPORTACION DE TIPOS DE CAMBIO (API JSON) -> TVP -> sp_tipo_cambio_UpsertMasivo
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_importar_tipo_cambio_json
     @id_fuente INT,

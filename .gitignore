@@ -1,0 +1,12 @@
+# Contraseñas locales
+00_Secretos.local.sql
+*.local.sql
+
+# Certificados y claves privadas
+*.pvk
+*.cer
+
+# Backups
+*.bak
+*.trn
+*.dif

@@ -19,7 +19,9 @@ SET NOCOUNT ON;
 SET XACT_ABORT ON;
 GO
 
-/*REPORTE 1: GOLEADORES POR SELECCION, FASE Y TORNEO*/
+/* =========================================================================
+   REPORTE 1: GOLEADORES POR SELECCION, FASE Y TORNEO
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_reporte_Goleadores
     @id_fase INT = NULL,
@@ -58,7 +60,9 @@ BEGIN
 END;
 GO
 
-/* REPORTE 2: TARJETAS (AMARILLAS Y ROJAS) Y SUSPENSIONES ACTIVAS (RETORNO XML)*/
+/* =========================================================================
+   REPORTE 2: TARJETAS (AMARILLAS Y ROJAS) Y SUSPENSIONES ACTIVAS (RETORNO XML)
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_reporte_Tarjetas
     @id_seleccion INT = NULL,
@@ -113,7 +117,9 @@ BEGIN
 END;
 GO
 
-/*REPORTE 3: DESIGNACIONES ARBITRALES Y SANCIONES SENALADAS*/
+/* =========================================================================
+   REPORTE 3: DESIGNACIONES ARBITRALES Y SANCIONES SENALADAS
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_reporte_DesignacionesArbitrales
     @id_arbitro INT = NULL
@@ -161,7 +167,9 @@ BEGIN
 END;
 GO
 
-/*REPORTE 4: OCUPACION PUBLICITARIA POR SEDE Y PARTIDO (INGRESOS GENERADOS)*/
+/* =========================================================================
+   REPORTE 4: OCUPACION PUBLICITARIA POR SEDE Y PARTIDO (INGRESOS GENERADOS)
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_reporte_OcupacionPublicitaria
     @id_sede INT = NULL,
@@ -207,8 +215,10 @@ BEGIN
 END;
 GO
 
-/* REPORTE 5: MATRIZ DE PRIME TIME (PIVOT PARTIDO VS MERCADOS/PAISES)
-   Horario Prime Time definido: hora local del mercado entre 19:00 y 23:00.*/
+/* =========================================================================
+   REPORTE 5: MATRIZ DE PRIME TIME (PIVOT PARTIDO VS MERCADOS/PAISES)
+   Horario Prime Time definido: hora local del mercado entre 19:00 y 23:00.
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_reporte_MatrizPrimeTime
     @id_partido INT = NULL
@@ -274,7 +284,9 @@ BEGIN
 END;
 GO
 
-/*REPORTE 6: SELECCIONES Y PLANTILLAS (VECTOR ANIDADO DE CONVOCADOS EN XML)*/
+/* =========================================================================
+   REPORTE 6: SELECCIONES Y PLANTILLAS (VECTOR ANIDADO DE CONVOCADOS EN XML)
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_reporte_SeleccionesPlantillas
     @id_seleccion INT = NULL
@@ -317,7 +329,9 @@ BEGIN
 END;
 GO
 
-/*REPORTE 7: RESULTADOS DE LOS ENCUENTROS (FORMATO ILUSTRATIVO)*/
+/* =========================================================================
+   REPORTE 7: RESULTADOS DE LOS ENCUENTROS (FORMATO ILUSTRATIVO)
+   ========================================================================= */
 
 CREATE OR ALTER PROCEDURE mundial.sp_reporte_ResultadosEncuentros
     @id_fase INT = NULL,
